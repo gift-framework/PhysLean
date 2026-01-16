@@ -48,15 +48,23 @@ The multiplication follows the Fano plane structure.
 
 /-- Octonion as an 8-tuple: (re, e₁, e₂, e₃, e₄, e₅, e₆, e₇). -/
 structure Octonion (R : Type*) [Ring R] where
-  re : R      -- Real part
-  e1 : R      -- Imaginary e₁
-  e2 : R      -- Imaginary e₂
-  e3 : R      -- Imaginary e₃
-  e4 : R      -- Imaginary e₄
-  e5 : R      -- Imaginary e₅
-  e6 : R      -- Imaginary e₆
-  e7 : R      -- Imaginary e₇
-  deriving DecidableEq, Repr
+  /-- Real part. -/
+  re : R
+  /-- Imaginary component e₁. -/
+  e1 : R
+  /-- Imaginary component e₂. -/
+  e2 : R
+  /-- Imaginary component e₃. -/
+  e3 : R
+  /-- Imaginary component e₄. -/
+  e4 : R
+  /-- Imaginary component e₅. -/
+  e5 : R
+  /-- Imaginary component e₆. -/
+  e6 : R
+  /-- Imaginary component e₇. -/
+  e7 : R
+  deriving DecidableEq
 
 variable {R : Type*} [Ring R]
 
