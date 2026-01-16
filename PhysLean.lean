@@ -41,6 +41,10 @@ import PhysLean.Electromagnetism.PointParticle.ThreeDimension
 import PhysLean.Electromagnetism.Vacuum.Constant
 import PhysLean.Electromagnetism.Vacuum.HarmonicWave
 import PhysLean.Electromagnetism.Vacuum.IsPlaneWave
+import PhysLean.G2.CrossProduct
+import PhysLean.G2.E8Lattice
+import PhysLean.G2.Geometry.Exterior
+import PhysLean.G2.RootSystems
 import PhysLean.Mathematics.Calculus.AdjFDeriv
 import PhysLean.Mathematics.Calculus.Divergence
 import PhysLean.Mathematics.DataStructures.FourTree.Basic
@@ -390,8 +394,3 @@ import PhysLean.Units.WithDim.Momentum
 import PhysLean.Units.WithDim.Pressure
 import PhysLean.Units.WithDim.Speed
 import PhysLean.Units.WithDim.Velocity
--- G2 geometry (GIFT migration)
-import PhysLean.G2.CrossProduct
-import PhysLean.G2.E8Lattice
-import PhysLean.G2.RootSystems
-import PhysLean.G2.Geometry.Exterior

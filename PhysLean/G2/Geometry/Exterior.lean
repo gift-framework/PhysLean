@@ -81,7 +81,7 @@ def basisVec (i : Fin 7) : V7 := fun j => if i = j then 1 else 0
 /-- Standard basis 1-form εⁱ = ι(eᵢ) ∈ Λ¹(V). -/
 noncomputable def basisForm (i : Fin 7) : Ext := ι (basisVec i)
 
--- Notation for basis forms
+/-- Notation ε for basis 1-forms: ε i represents the i-th standard basis 1-form. -/
 notation "ε" => basisForm
 
 /-!
@@ -94,7 +94,7 @@ We use ∧' notation to avoid conflict with Lean's built-in ∧.
 /-- Wedge product as algebra multiplication. -/
 noncomputable def wedge (ω η : Ext) : Ext := ω * η
 
--- Use ∧' to avoid conflict with Lean's logical ∧
+/-- Wedge product notation ∧' to avoid conflict with Lean's logical ∧. -/
 infixl:70 " ∧' " => wedge
 
 /-- Wedge is associative. -/

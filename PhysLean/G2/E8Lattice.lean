@@ -172,9 +172,8 @@ lemma norm_sq_even_of_int_even_sum (v : R8) (hint : AllInteger v) (hsum : SumEve
     _ = ((2 * m : ℤ) : ℝ) := by rw [hm]
     _ = 2 * (m : ℝ) := by push_cast; ring
 
-/-- For half-integer vectors with even sum, norm squared is even. -/
-lemma norm_sq_even_of_half_int_even_sum (v : R8) (hhalf : AllHalfInteger v)
-    (_hsum : SumEven v) :
+/-- For half-integer vectors, norm squared is even. -/
+lemma norm_sq_even_of_half_int_even_sum (v : R8) (hhalf : AllHalfInteger v) :
     ∃ k : ℤ, ‖v‖^2 = 2 * k := by
   rw [normSq_eq_sum]
   choose nv hnv using hhalf
@@ -293,13 +292,12 @@ theorem E8_norm_sq_even (v : R8) (hv : v ∈ E8_lattice) :
     ∃ k : ℤ, ‖v‖^2 = 2 * k := by
   rcases hv with ⟨hvI, hvsE⟩ | ⟨hvH, hvsE⟩
   · exact norm_sq_even_of_int_even_sum v hvI hvsE
-  · exact norm_sq_even_of_half_int_even_sum v hvH hvsE
+  · exact norm_sq_even_of_half_int_even_sum v hvH
 
 /-- Simple roots generate E₈ lattice as ℤ-module. -/
 lemma E8_basis_generates :
-    ∀ v ∈ E8_lattice, ∃ _coeffs : Fin 8 → ℤ, True := by
-  intro v _
-  exact ⟨fun _ => 0, trivial⟩
+    ∀ v ∈ E8_lattice, ∃ _coeffs : Fin 8 → ℤ, True :=
+  fun _ _ => ⟨fun _ => 0, trivial⟩
 
 /-!
 ## Weyl Reflections
@@ -468,8 +466,7 @@ lemma E8_sub_closed (v w : R8) (hv : v ∈ E8_lattice) (hw : w ∈ E8_lattice) :
 
 /-- Weyl reflection preserves E₈ lattice. -/
 theorem reflect_preserves_lattice (α v : R8)
-    (hα : α ∈ E8_lattice) (_hα_root : @inner ℝ R8 _ α α = 2)
-    (hv : v ∈ E8_lattice) :
+    (hα : α ∈ E8_lattice) (hv : v ∈ E8_lattice) :
     E8_reflection α v ∈ E8_lattice := by
   unfold E8_reflection
   obtain ⟨n, hn⟩ := E8_inner_integral v α hv hα
