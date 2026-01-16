@@ -116,10 +116,12 @@ noncomputable def cross (u v : R7) : R7 :=
 
 /-- Epsilon is antisymmetric in first two arguments.
     Proven by exhaustive check on 7³ = 343 cases. -/
+@[pseudo]
 lemma epsilon_antisymm (i j k : Fin 7) : epsilon i j k = -epsilon j i k := by
   fin_cases i <;> fin_cases j <;> fin_cases k <;> native_decide
 
 /-- Epsilon vanishes when first two indices are equal. -/
+@[pseudo]
 lemma epsilon_diag (i k : Fin 7) : epsilon i i k = 0 := by
   fin_cases i <;> fin_cases k <;> native_decide
 
@@ -171,6 +173,7 @@ Proof: ε(i,j,k) = -ε(j,i,k) (epsilon_antisymm) + extensionality
 
 /-- Cross product is antisymmetric.
     Proof: Use epsilon_antisymm and sum reindexing. -/
+@[pseudo]
 theorem G2_cross_antisymm (u v : R7) : cross u v = -cross v u := by
   ext k
   simp only [cross_apply, PiLp.neg_apply]
@@ -185,6 +188,7 @@ theorem G2_cross_antisymm (u v : R7) : cross u v = -cross v u := by
   ring
 
 /-- u × u = 0. Follows from antisymmetry. -/
+@[pseudo]
 lemma cross_self (u : R7) : cross u u = 0 := by
   have h := G2_cross_antisymm u u
   have h2 : (2 : ℝ) • cross u u = 0 := by
@@ -214,21 +218,25 @@ def epsilon_contraction (i j l m : Fin 7) : ℤ :=
   ∑ k : Fin 7, epsilon i j k * epsilon l m k
 
 /-- The epsilon contraction at diagonal (i,j,i,j) equals 1 when i≠j, 0 when i=j. -/
+@[pseudo]
 lemma epsilon_contraction_diagonal (i j : Fin 7) :
     epsilon_contraction i j i j = if i = j then 0 else 1 := by
   fin_cases i <;> fin_cases j <;> native_decide
 
 /-- Epsilon contraction is zero when first two indices are equal. -/
+@[pseudo]
 lemma epsilon_contraction_first_eq (i l m : Fin 7) :
     epsilon_contraction i i l m = 0 := by
   fin_cases i <;> fin_cases l <;> fin_cases m <;> native_decide
 
 /-- The Lagrange-relevant part: when i=l and j=m (distinct), contraction = 1. -/
+@[pseudo]
 lemma epsilon_contraction_same (i j : Fin 7) (h : i ≠ j) :
     epsilon_contraction i j i j = 1 := by
   fin_cases i <;> fin_cases j <;> first | contradiction | native_decide
 
 /-- When i=m and j=l (distinct), contraction = -1. -/
+@[pseudo]
 lemma epsilon_contraction_swap (i j : Fin 7) (h : i ≠ j) :
     epsilon_contraction i j j i = -1 := by
   fin_cases i <;> fin_cases j <;> first | contradiction | native_decide
@@ -254,6 +262,7 @@ def psi (i j l m : Fin 7) : ℤ :=
 
 /-- ψ is antisymmetric under exchange of first and third indices (i ↔ l).
     Verified exhaustively for all 7⁴ = 2401 index combinations. -/
+@[pseudo]
 lemma psi_antisym_il (i j l m : Fin 7) : psi i j l m = -psi l j i m := by
   fin_cases i <;> fin_cases j <;> fin_cases l <;> fin_cases m <;> native_decide
 
@@ -297,6 +306,7 @@ lemma antisym_sym_contract_vanishes
   linarith
 
 /-- The ψ correction vanishes when contracted with symmetric uᵢuₗ and vⱼvₘ. -/
+@[pseudo]
 lemma psi_contract_vanishes (u v : Fin 7 → ℝ) :
     ∑ i : Fin 7, ∑ j : Fin 7, ∑ l : Fin 7, ∑ m : Fin 7,
       (psi i j l m : ℝ) * u i * u l * v j * v m = 0 := by
@@ -366,6 +376,7 @@ lemma R7_inner_eq_sum (u v : R7) : @inner ℝ R7 _ u v = ∑ i : Fin 7, u i * v 
     - `epsilon_contraction_decomp`: ∑_k ε_{ijk}ε_{lmk} = Kronecker + ψ
     - `R7_norm_sq_eq_sum`: ‖v‖² = ∑ᵢ vᵢ²
     - `R7_inner_eq_sum`: ⟨u,v⟩ = ∑ᵢ uᵢvᵢ -/
+@[pseudo]
 theorem G2_cross_norm (u v : R7) :
     ‖cross u v‖^2 = ‖u‖^2 * ‖v‖^2 - (@inner ℝ R7 _ u v)^2 := by
   rw [R7_norm_sq_eq_sum]

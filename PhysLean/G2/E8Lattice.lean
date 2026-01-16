@@ -294,10 +294,9 @@ theorem E8_norm_sq_even (v : R8) (hv : v ∈ E8_lattice) :
   · exact norm_sq_even_of_int_even_sum v hvI hvsE
   · exact norm_sq_even_of_half_int_even_sum v hvH
 
-/-- Simple roots generate E₈ lattice as ℤ-module. -/
-lemma E8_basis_generates :
-    ∀ v ∈ E8_lattice, ∃ _coeffs : Fin 8 → ℤ, True :=
-  fun _ _ => ⟨fun _ => 0, trivial⟩
+/-- Simple roots generate E₈ lattice as ℤ-module (placeholder). -/
+lemma E8_basis_generates (v : R8) : ∃ _coeffs : Fin 8 → ℤ, True :=
+  ⟨fun _ => 0, trivial⟩
 
 /-!
 ## Weyl Reflections
@@ -485,10 +484,12 @@ theorem reflect_preserves_lattice (α v : R8)
 def E8_weyl_order : ℕ := 696729600
 
 /-- E₈ Weyl group order factorization. -/
+@[pseudo]
 lemma E8_weyl_order_factored :
     E8_weyl_order = 2^14 * 3^5 * 5^2 * 7 := by native_decide
 
 /-- Weyl group order verification. -/
+@[pseudo]
 lemma E8_weyl_order_check :
     2^14 * 3^5 * 5^2 * 7 = 696729600 := by native_decide
 

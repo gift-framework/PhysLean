@@ -68,12 +68,14 @@ def D8_positions : Finset (Fin 8 × Fin 8) :=
   (Finset.univ ×ˢ Finset.univ).filter (fun p => p.1 < p.2)
 
 /-- There are C(8,2) = 28 such pairs. -/
+@[pseudo]
 lemma D8_positions_card : D8_positions.card = 28 := by native_decide
 
 /-- Sign choices for the two non-zero coordinates. -/
 def D8_signs : Finset (Bool × Bool) := Finset.univ
 
 /-- There are 4 sign choices. -/
+@[pseudo]
 lemma D8_signs_card : D8_signs.card = 4 := by native_decide
 
 /-- D₈ root enumeration: position pairs × sign pairs. -/
@@ -81,6 +83,7 @@ def D8_enumeration : Finset ((Fin 8 × Fin 8) × (Bool × Bool)) :=
   D8_positions ×ˢ D8_signs
 
 /-- |D₈ roots| = 28 × 4 = 112. -/
+@[pseudo]
 theorem D8_card : D8_enumeration.card = 112 := by
   simp only [D8_enumeration, card_product, D8_positions_card, D8_signs_card]
 
@@ -219,6 +222,7 @@ theorem D8_to_vector_injective :
 def all_sign_patterns : Finset (Fin 8 → Bool) := Finset.univ
 
 /-- There are 2^8 = 256 sign patterns. -/
+@[pseudo]
 lemma all_sign_patterns_card : all_sign_patterns.card = 256 := by native_decide
 
 /-- Count of true values in a pattern (= number of +1/2 entries). -/
@@ -234,6 +238,7 @@ def HalfInt_enumeration : Finset (Fin 8 → Bool) :=
   all_sign_patterns.filter (fun f => has_even_sum f)
 
 /-- |Half-integer roots| = 128. By symmetry, exactly half of 256 patterns have even sum. -/
+@[pseudo]
 theorem HalfInt_card : HalfInt_enumeration.card = 128 := by native_decide
 
 /-!
@@ -325,6 +330,7 @@ lemma D8_to_vector_norm_sq (e : (Fin 8 × Fin 8) × (Bool × Bool))
 -/
 
 /-- |E₈ roots| = |D₈| + |HalfInt| = 112 + 128 = 240. -/
+@[pseudo]
 theorem E8_roots_card : D8_enumeration.card + HalfInt_enumeration.card = 240 := by
   rw [D8_card, HalfInt_card]
 
@@ -354,6 +360,7 @@ lemma E8_roots_decomposition :
                      HalfInt_enumeration.map ⟨Sum.inr, Sum.inr_injective⟩ := rfl
 
 /-- Cardinality of E₈ via decomposition. -/
+@[pseudo]
 theorem E8_enumeration_card : E8_enumeration.card = 240 := by
   rw [E8_enumeration, Finset.card_union_of_disjoint E8_decomposition_disjoint]
   simp only [Finset.card_map]
@@ -363,6 +370,7 @@ theorem E8_enumeration_card : E8_enumeration.card = 240 := by
 theorem E8_dimension : 240 + 8 = 248 := rfl
 
 /-- Combined theorem: dim(E₈) derived from root enumeration. -/
+@[pseudo]
 theorem E8_dimension_from_enumeration :
     D8_enumeration.card + HalfInt_enumeration.card + 8 = 248 := by
   rw [D8_card, HalfInt_card]
@@ -375,6 +383,7 @@ theorem E8_dimension_from_enumeration :
 lemma D8_norm_sq : (1 : ℕ)^2 + 1^2 = 2 := rfl
 
 /-- D₈ root has even sum (±1 ± 1 ∈ {-2, 0, 2}). -/
+@[pseudo]
 lemma D8_sum_even : ∀ a b : Bool,
     let v1 : Int := if a then 1 else -1
     let v2 : Int := if b then 1 else -1
