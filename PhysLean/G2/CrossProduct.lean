@@ -7,6 +7,7 @@ Authors: Brieuc de La Fournière
 import Mathlib.Analysis.InnerProductSpace.PiL2
 import Mathlib.Algebra.BigOperators.Group.Finset.Basic
 import Mathlib.Data.Real.Basic
+import PhysLean.Meta.Linters.Sorry
 
 /-!
 # G₂ Cross Product

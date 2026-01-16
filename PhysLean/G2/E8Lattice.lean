@@ -8,6 +8,7 @@ import Mathlib.Algebra.BigOperators.Group.Finset.Basic
 import Mathlib.Analysis.InnerProductSpace.PiL2
 import Mathlib.Data.Int.Basic
 import Mathlib.Data.Real.Basic
+import PhysLean.Meta.Linters.Sorry
 
 /-!
 # E₈ Lattice Properties
@@ -295,7 +296,7 @@ theorem E8_norm_sq_even (v : R8) (hv : v ∈ E8_lattice) :
   · exact norm_sq_even_of_half_int_even_sum v hvH
 
 /-- Simple roots generate E₈ lattice as ℤ-module (placeholder). -/
-lemma E8_basis_generates (v : R8) : ∃ _coeffs : Fin 8 → ℤ, True :=
+lemma E8_basis_generates (_v : R8) : ∃ _coeffs : Fin 8 → ℤ, True :=
   ⟨fun _ => 0, trivial⟩
 
 /-!

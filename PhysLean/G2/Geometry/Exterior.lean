@@ -9,6 +9,7 @@ import Mathlib.Data.Fin.VecNotation
 import Mathlib.Data.Real.Basic
 import Mathlib.LinearAlgebra.Dimension.Finrank
 import Mathlib.LinearAlgebra.ExteriorAlgebra.Basic
+import PhysLean.Meta.Linters.Sorry
 
 /-!
 # Exterior Algebra on ℝ⁷

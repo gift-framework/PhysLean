@@ -13,6 +13,7 @@ import Mathlib.Data.Fintype.Pi
 import Mathlib.Data.Fintype.Prod
 import Mathlib.Data.Real.Basic
 import Mathlib.Tactic.FinCases
+import PhysLean.Meta.Linters.Sorry
 import Mathlib.Tactic.Linarith
 import Mathlib.Tactic.Ring
 
