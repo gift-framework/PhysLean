@@ -390,7 +390,6 @@ import PhysLean.Units.WithDim.Momentum
 import PhysLean.Units.WithDim.Pressure
 import PhysLean.Units.WithDim.Speed
 import PhysLean.Units.WithDim.Velocity
--- G2 Algebra (GIFT migration Phase 2)
 import PhysLean.G2.Algebra.GoldenRatio
 import PhysLean.G2.Algebra.Octonions
 import PhysLean.G2.Algebra.Quaternions
