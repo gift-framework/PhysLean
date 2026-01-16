@@ -9,6 +9,7 @@ import Mathlib.Data.Fin.VecNotation
 import Mathlib.Data.Real.Basic
 import Mathlib.LinearAlgebra.Dimension.Finrank
 import Mathlib.LinearAlgebra.ExteriorAlgebra.Basic
+import PhysLean.Meta.Linters.Sorry
 
 /-!
 # Exterior Algebra on ℝ⁷
@@ -81,7 +82,7 @@ def basisVec (i : Fin 7) : V7 := fun j => if i = j then 1 else 0
 /-- Standard basis 1-form εⁱ = ι(eᵢ) ∈ Λ¹(V). -/
 noncomputable def basisForm (i : Fin 7) : Ext := ι (basisVec i)
 
--- Notation for basis forms
+/-- Notation ε for basis 1-forms: ε i represents the i-th standard basis 1-form. -/
 notation "ε" => basisForm
 
 /-!
@@ -94,7 +95,7 @@ We use ∧' notation to avoid conflict with Lean's built-in ∧.
 /-- Wedge product as algebra multiplication. -/
 noncomputable def wedge (ω η : Ext) : Ext := ω * η
 
--- Use ∧' to avoid conflict with Lean's logical ∧
+/-- Wedge product notation ∧' to avoid conflict with Lean's logical ∧. -/
 infixl:70 " ∧' " => wedge
 
 /-- Wedge is associative. -/
@@ -223,27 +224,35 @@ The k-th exterior power Λᵏ(V) has dimension C(n,k) where n = dim V.
 -/
 
 /-- dim Λ¹(V₇) = 7. -/
+@[pseudo]
 lemma dim_1forms : Nat.choose 7 1 = 7 := by native_decide
 
 /-- dim Λ²(V₇) = C(7,2) = 21. -/
+@[pseudo]
 theorem dim_2forms : Nat.choose 7 2 = 21 := by native_decide
 
 /-- dim Λ³(V₇) = C(7,3) = 35. -/
+@[pseudo]
 theorem dim_3forms : Nat.choose 7 3 = 35 := by native_decide
 
 /-- dim Λ⁴(V₇) = C(7,4) = 35. -/
+@[pseudo]
 lemma dim_4forms : Nat.choose 7 4 = 35 := by native_decide
 
 /-- dim Λ⁵(V₇) = C(7,5) = 21. -/
+@[pseudo]
 lemma dim_5forms : Nat.choose 7 5 = 21 := by native_decide
 
 /-- dim Λ⁶(V₇) = C(7,6) = 7. -/
+@[pseudo]
 lemma dim_6forms : Nat.choose 7 6 = 7 := by native_decide
 
 /-- dim Λ⁷(V₇) = C(7,7) = 1 (volume form). -/
+@[pseudo]
 lemma dim_7forms : Nat.choose 7 7 = 1 := by native_decide
 
 /-- Total dimension: Σₖ C(7,k) = 2⁷ = 128. -/
+@[pseudo]
 lemma dim_total : ((List.range 8).map (Nat.choose 7)).sum = 128 := by native_decide
 
 /-!
@@ -253,12 +262,15 @@ On a G₂-manifold, differential forms decompose into irreducible G₂-represent
 -/
 
 /-- Ω² decomposes as Ω²₇ ⊕ Ω²₁₄ under G₂ action. -/
+@[pseudo]
 theorem G2_decomp_Omega2 : 7 + 14 = 21 := by native_decide
 
 /-- Ω³ decomposes as Ω³₁ ⊕ Ω³₇ ⊕ Ω³₂₇ under G₂ action. -/
+@[pseudo]
 theorem G2_decomp_Omega3 : 1 + 7 + 27 = 35 := by native_decide
 
 /-- The G₂ 3-form φ spans Ω³₁ (the 1-dimensional component). -/
+@[pseudo]
 lemma phi_spans_Omega3_1 : 1 = Nat.choose 7 3 - (7 + 27) := by native_decide
 
 /-!
@@ -274,6 +286,7 @@ noncomputable def volumeForm : Ext :=
 -/
 
 /-- Infrastructure completeness certificate. -/
+@[pseudo]
 theorem exterior_infrastructure_complete :
     (Nat.choose 7 2 = 21) ∧
     (Nat.choose 7 3 = 35) ∧
